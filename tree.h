@@ -7,7 +7,7 @@
 #ifndef PROJET_C_BROUILLON_2022_TREE_H
 #define PROJET_C_BROUILLON_2022_TREE_H
 
-
+// Structure de l'arbre
 struct s_tree
 {
     struct s_letter_node * root;
@@ -16,7 +16,7 @@ struct s_tree
 typedef struct s_tree t_tree, *p_tree;
 
 t_tree CreateTree();
-void ReadFile(FILE *myfile);
+void ReadFileAndFillTree(FILE *myfile);
 
 #endif //PROJET_C_BROUILLON_2022_TREE_H
 
