@@ -1,13 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include "tree.h"
 #include "node.h"
 #include <stdbool.h>
 
 int main() {
     int x;
-    char mot[10];
+    char mot[100];
     bool exit;
     exit = false;
 
@@ -24,7 +23,8 @@ int main() {
                 printf("Impossible d'ouvrir le fichier dico.txt");
             } else {
                 printf("Le fichier est ouvert \n");
-                ReadFile(dictionnaryFile);
+                t_tree Mytree;
+                ReadFileAndFillTree(dictionnaryFile);
             }
         } else {
             if (x == 2) {
