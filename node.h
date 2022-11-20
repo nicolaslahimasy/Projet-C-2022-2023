@@ -5,11 +5,13 @@
 #define PROJET_C_BROUILLON_2022_NODE_H
 #include "tree.h"
 
-// Structure d'une cellule //
+
 typedef struct s_letter_node t_letter_node, *p_letter_node ;
 // Structure pour les formes fléchies
 typedef struct s_word t_word, *p_word ;
 
+
+// Structure d'une cellule
 typedef struct s_cell
 {
     p_letter_node son ;
@@ -38,12 +40,13 @@ typedef struct s_word_list
 } t_word_list ;
 
 
-// Structure dans lequel on met un noeud avec le caractère et ses enfants
+// Structure pour stocker les formes fléchies
 struct s_letter_node
 {
     char letter ;
     t_std_list *sons;
     t_word_list * arrowedform;
+    int cpt;
 };
 typedef struct s_letter_node t_letter_node, *p_letter_node ;
 
@@ -71,3 +74,4 @@ p_cell createCell(char letter);
 p_word_cell createWordCell();
 
 #endif //PROJET_C_BROUILLON_2022_NODE_H
+
