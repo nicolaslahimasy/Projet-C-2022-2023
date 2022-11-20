@@ -13,35 +13,57 @@ t_tree Create_Tree()
     return myTree;
 }
 
-void ReadFile(FILE *myfile){
-        char line[1000];
-        while (fgets(line, 1000, myfile) != NULL) {
-            char *col1 = strtok(line, "\t");
-            printf(" RA : %s\t| ", col1);
-            char *col2 = strtok(NULL, "\t");
-            printf(" FDB : %s\t| ", col2);
-            char *col3 = strtok(NULL, "\t");
-            printf(" FF : %s\t\n ", col3);
+
+// Fonction qui permet de récuperer les informations du fichier et les séparer
+void ReadFileAndFillTree(FILE *myfile) {
+    char line[1000];
+    while (fgets(line, 1000, myfile) != NULL) {
+        char *rad = strtok(line, "\t");
+        printf(" RA : %s\t| ", rad); // Radical
+        char *base = strtok(NULL, "\t");
+        printf(" FDB : %s\t| ", base); // FDB : Forme de base
+        char *flech = strtok(NULL, "\t");
+        printf(" FF : %s\t\n ", flech); // FF : Forme Fléchie
+
+        // Cette partie du code ne marche pas vraiment ... //
+
+        /*p_tree myTree;
+        p_letter_node temp = NULL;
+        temp = myTree->root; //On se met sur la racine de l'arbre, temp va nous permettre de parcourir les listes et donc de remplir l'arbre
+        for (int i = 0; i < (int) strlen(base); i++) {
+            p_cell ptr_cell = NULL;
+            ptr_cell = temp->sons->head;// On se place sur la tête de la liste
+            while (ptr_cell != NULL) {
+                if (base[i] == ptr_cell->son->letter) {
+                    temp = ptr_cell->son;// On assigne a temp la valeur du fils de la cellule
+                } else {
+                    ptr_cell = ptr_cell->next;
+                }
             }
-                p_tree myTree;
-                p_letter_node tmp = NULL;
-                tmp = myTree->root; //On se met sur la racine de l'arbre
-
-
-
-
+            p_cell mycell = createCell(base[i]);
+            if (temp->sons->head == NULL) {
+                temp->sons->head = mycell;// On assigne temp à la tête de la liste des fils si la tête de la liste est nulle
+                temp->cpt += 1;
+            } else {
+                p_cell tmp_cell = temp->sons->head;
+                while (tmp_cell->next != NULL) {// Si la liste n'est pas nulle, on la parcourt jusqu'à trouver une cellule vide
+                    tmp_cell = tmp_cell->next;
+                }
+                tmp_cell->next = mycell;
+                temp->cpt += 1;//On ajoute 1 à la valeur comptant les formes fléchies
+            }
+            temp = mycell->son;
+        }
+        if (temp->arrowedform->head == NULL) {
+            temp->arrowedform->head = createWordCell();// On crée une cellule à la tête de la liste des formes fléchies si la liste est nulle
+        } else {
+            p_word_cell tmp_cell = temp->arrowedform->head;
+            while (tmp_cell->next != NULL) {
+                tmp_cell = tmp_cell->next;
+            }
+            tmp_cell->next = createWordCell();// Si la liste n'est pas nulle on la parcourt puis on insère une cellule en fin de liste
+        }*/
+    }
 }
 
-// Création des arbres pour chaque forme
-//t_tree NomTree = Create_Tree();
-//t_tree AdjTree = Create_Tree();
-//t_tree VerbeTree = Create_Tree();
-//t_tree AdvTree = Create_Tree();
-
-
-// Découper chaque ligne du fichier en utilisant les fonctions strcpy et strtok
-// Récuperer les informations du fichier dictionnaire et les stocker dans des variables qui serviront à remplir l'arbre
-
-// Faire une fonction qui extrait un mot au hasard dans le fichier dictionnaire en parcourant l'arbre
-// avec la fonction rand
 
